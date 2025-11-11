@@ -3,6 +3,9 @@ import json
 import shutil
 import os
 
+from tkinter import messagebox
+from PIL import Image
+
 class Tooltip:
     def __init__(self, widget, text):
         self.widget = widget
@@ -43,9 +46,6 @@ class Tooltip:
         if self.tooltip:
             self.tooltip.destroy()
             self.tooltip = None
-
-from tkinter import messagebox
-from PIL import Image
 
 # ===== CAMINHOS DO JOGO =====
 PASTA_GAME_SMD = r"C:\Zenit Games\Priston Tale Brasil Reloaded (Beta)\image\Sinimage\Items\DropItem"
