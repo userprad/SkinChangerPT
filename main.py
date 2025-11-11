@@ -54,7 +54,7 @@ PASTA_GAME_BMP = r"C:\Zenit Games\Priston Tale Brasil Reloaded (Beta)\image\Sini
 # ===== CAMINHOS LOCAIS DO PROGRAMA =====
 PASTA_ITEMS = r"./ItemsPack"   # .smd de origem
 PASTA_IMG   = r"./Images"      # .png preview
-
+#
 # Carregar itens
 with open("items.json", "r", encoding="utf-8") as file:
     categorias = json.load(file)
