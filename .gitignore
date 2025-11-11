@@ -1,0 +1,17 @@
+# Logs
+*.log
+logs/
+log/
+*.txt  # caso seus logs estejam em .txt também
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+
+# PyInstaller (caso esteja gerando EXE)
+dist/
+build/
+*.spec
