@@ -398,6 +398,40 @@
   "Punhos Verus": "itwv129.smd",
   "Punhos Abissais": "itwv130.smd",
   "Punhos Verthex": "itwv131.smd"
+},
+
+"Escudos":
+{
+  "Escudo de Madeira": "itds101.smd",
+  "Tampa": "itds102.smd",
+  "Quebra-Aço": "itds103.smd",
+  "Escudo Kite": "itds104.smd",
+  "Escudo Torre": "itds105.smd",
+  "Escudo Metálico": "itds106.smd",
+  "Scutum": "itds107.smd",
+  "Escudo Chama": "itds108.smd",
+  "Escudo Garra": "itds109.smd",
+  "Escudo Alado": "itds110.smd",
+  "Escudo Grande": "itds111.smd",
+  "Escudo Espinhoso": "itds112.smd",
+  "Escudo Grandioso": "itds113.smd",
+  "Escudo Extremo": "itds114.smd",
+  "Escudo Gladiador": "itds115.smd",
+  "Escudo Sintético (80A)": "itds116.smd",
+  "Escudo Titan (80B)": "itds117.smd",
+  "Escudo Místico (80C)": "itds118.smd",
+  "Escudo do Vampiro (80D)": "itds119.smd",
+  "Escudo do Dragão (80E)": "itds120.smd",
+  "Escudo Fênix": "itds121.smd",
+  "Escudo da Morte": "itds122.smd",
+  "Escudo Inferno": "itds123.smd",
+  "Escudo Cronus": "itds124.smd",
+  "Escudo Mitológico": "itds125.smd",
+  "Escudo Mortal": "itds126.smd",
+  "Escudo Flamejante": "itds127.smd",
+  "Escudo Verus": "itds128.smd",
+  "Escudo Verthex": "itds129.smd",
+  "Escudo Abissal": "itds155.smd"
 }
 
 }

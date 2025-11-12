@@ -50,6 +50,7 @@ class Tooltip:
 # ===== CAMINHOS DO JOGO =====
 PASTA_GAME_SMD = r"C:\Zenit Games\Priston Tale Brasil Reloaded (Beta)\image\Sinimage\Items\DropItem"
 PASTA_GAME_BMP = r"C:\Zenit Games\Priston Tale Brasil Reloaded (Beta)\image\Sinimage\Items\Weapon"
+PASTA_GAME_DEF = r"C:\Zenit Games\Priston Tale Brasil Reloaded (Beta)\image\Sinimage\Items\Defense"
 
 # ===== CAMINHOS LOCAIS DO PROGRAMA =====
 PASTA_ITEMS = r"./ItemsPack"   # .smd de origem
@@ -104,6 +105,19 @@ def selecionar_item_novo(_=None):
         carregar_imagem(categorias[cat][item], frame_img_right, img_novo)
 
 
+# Funções rápidas para Escudos
+def set_categoria_escudos_atual():
+    # define a categoria Atual como Escudos e atualiza a lista
+    box_cat_atual.set("Escudos")
+    atualizar_itens_atual()
+
+def set_categoria_escudos_novo():
+    # define a categoria Novo como Escudos e atualiza a lista
+    box_cat_novo.set("Escudos")
+    atualizar_itens_novo()
+
+
+
 # ===== Função de troca agora move .smd e .bmp =====
 def trocar_itens():
     cat_atual = box_cat_atual.get()
@@ -128,7 +142,11 @@ def trocar_itens():
 
     # Caminhos do JOGO (onde será substituído)
     destino_smd = os.path.join(PASTA_GAME_SMD, arq_atual)
-    destino_bmp = os.path.join(PASTA_GAME_BMP, base_atual + ".bmp")
+    # para armaduras/escudos o BMP vai para a pasta Defense; para armas usa Weapon
+    if cat_atual == "Escudos":
+        destino_bmp = os.path.join(PASTA_GAME_DEF, base_atual + ".bmp")
+    else:
+        destino_bmp = os.path.join(PASTA_GAME_BMP, base_atual + ".bmp")
 
     if not os.path.exists(origem_smd):
         messagebox.showerror("Erro", f"SMD não encontrado:\n{origem_smd}")
@@ -148,7 +166,7 @@ def trocar_itens():
         # ⬇ GRAVA O LOG DA TROCA
         salvar_log(item_atual, item_novo)
 
-        messagebox.showinfo("Sucesso!", f"{item_atual} foi substituído por {item_novo}.")
+        messagebox.showinfo("Sucesso!", f"{item_atual} foi substituído por {item_novo}.\n\n")
 
     except Exception as e:
         messagebox.showerror("Erro na troca", str(e))
@@ -170,8 +188,10 @@ frame_right.pack(side="right", padx=10, pady=10, fill="y")
 
 # Esquerda
 ctk.CTkLabel(frame_left, text="Item Equipado", font=("Arial", 15, "bold")).pack()
-box_cat_atual = ctk.CTkComboBox(frame_left, values=lista_categorias, command=atualizar_itens_atual)
-box_cat_atual.pack(pady=5)
+frame_cat_atual = ctk.CTkFrame(frame_left, fg_color="transparent")
+frame_cat_atual.pack(pady=5, fill="x")
+box_cat_atual = ctk.CTkComboBox(frame_cat_atual, values=lista_categorias, command=atualizar_itens_atual)
+box_cat_atual.pack(side="left", expand=True, fill="x")
 box_cat_atual.set("Selecione a categoria")
 
 box_atual = ctk.CTkComboBox(frame_left, values=[], command=selecionar_item_atual)
@@ -188,8 +208,10 @@ img_atual.pack(expand=True)
 
 # Direita
 ctk.CTkLabel(frame_right, text="Skin a Aplicar", font=("Arial", 15, "bold")).pack()
-box_cat_novo = ctk.CTkComboBox(frame_right, values=lista_categorias, command=atualizar_itens_novo)
-box_cat_novo.pack(pady=5)
+frame_cat_novo = ctk.CTkFrame(frame_right, fg_color="transparent")
+frame_cat_novo.pack(pady=5, fill="x")
+box_cat_novo = ctk.CTkComboBox(frame_cat_novo, values=lista_categorias, command=atualizar_itens_novo)
+box_cat_novo.pack(side="left", expand=True, fill="x")
 box_cat_novo.set("Selecione uma categoria")
 
 box_novo = ctk.CTkComboBox(frame_right, values=[], command=selecionar_item_novo)
@@ -206,8 +228,11 @@ img_novo.pack(expand=True)
 
 # Botão
 
+# Botões rápidos agora inline ao lado das categorias
+
+# Botão geral de troca
 btn_trocar = ctk.CTkButton(app, text="⇄", command=trocar_itens, width=200, height=40)
-btn_trocar.pack(pady=(55, 4))
+btn_trocar.pack(pady=(4, 4))
 
 help_label = ctk.CTkLabel(app, text="?", font=("Arial", 18, "bold"), text_color="#888888")
 help_label.pack()
